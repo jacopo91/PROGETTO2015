@@ -7,7 +7,7 @@
 <title>siw-servlet-es7</title>
 </head>
 <body>
-<h1>siw-servlet-es7</h1>
+<h1>progetto</h1>
 <a href="<c:url value="newProduct.jsp" />">Insert a new product</a>
 </body>
 </html>
