@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="US-ASCII">
-<title>siw-servlet-es7</title>
+<title>PAGINA INIZIALE</title>
 </head>
 <body>
 <h1>progetto</h1>
