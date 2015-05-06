@@ -9,7 +9,7 @@
 <title>Product</title>
 </head>
 <body>
-<h1>Products</h1>
+<h1>prodotti</h1>
 <table>
 	<tr>
 		<th>Name</th>
