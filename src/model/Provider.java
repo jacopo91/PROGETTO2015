@@ -16,7 +16,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class Provider {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -45,7 +44,6 @@ public class Provider {
 
 	public Provider() {
 	}
-
 
 	public Long getId() {
 		return id;
@@ -77,8 +75,6 @@ public class Provider {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-
 
 	public String getpIva() {
 		return pIva;
