@@ -16,6 +16,7 @@
 					clienti</a></li>
 			<li><a href='<c:url value="/faces/loginAdministrator.jsp" />'>Accesso
 					amministratori</a></li>
+		</ul>
 	</f:view>
 </body>
 </html>

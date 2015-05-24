@@ -14,6 +14,12 @@
 			azioni:</h1>
 		<div>
 			<h:form>
+				<h:commandLink action="#{productController.listProducts}"
+					value="Catalogo prodotti" />
+			</h:form>
+		</div>
+		<div>
+			<h:form>
 				<h:commandLink action="#{customerController.logoutCustomer}"
 					value="Logout" />
 			</h:form>

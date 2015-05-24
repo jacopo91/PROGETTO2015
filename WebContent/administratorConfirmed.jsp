@@ -17,6 +17,10 @@
 				<li><h:commandLink
 						action="#{customerController.findSuspendedCustomers}"
 						value="Gestione Clienti" /></li>
+				<li><h:commandLink action="#{productController.listProducts}"
+						value="Gestione Prodotti" /></li>
+				<li><h:commandLink action="#{productController.listProviders}"
+						value="Gestione Fornitori" /></li>
 				<li><h:commandLink
 						action="#{administratorController.logoutAdministrator}"
 						value="Logout" /></li>
