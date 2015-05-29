@@ -13,6 +13,12 @@
 		<h1>Ciao ${currentCustomer.firstName} scegli tra le seguenti
 			azioni:</h1>
 		<div>
+			<div>
+				<h:form>
+					<h:commandLink action="#{orderController.listOrders}"
+						value="Gestisci ordini" />
+				</h:form>
+			</div>
 			<h:form>
 				<h:commandLink action="#{productController.listProducts}"
 					value="Catalogo prodotti" />

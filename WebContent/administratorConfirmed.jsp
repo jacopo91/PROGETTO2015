@@ -21,6 +21,8 @@
 						value="Gestione Prodotti" /></li>
 				<li><h:commandLink action="#{productController.listProviders}"
 						value="Gestione Fornitori" /></li>
+				<li><h:commandLink action="#{orderController.listClosedOrders}"
+						value="Gestione Ordini" /></li>
 				<li><h:commandLink
 						action="#{administratorController.logoutAdministrator}"
 						value="Logout" /></li>

@@ -38,15 +38,11 @@
 									action="#{productController.updateProductQuantity}">
 									<f:param name="id" value="#{product.id}" />
 								</h:commandButton></td>
-
 						</c:if>
-
 					</tr>
 				</h:form>
 			</c:forEach>
 		</table>
-
-
 		<c:choose>
 			<c:when test="${currentAdministrator != null}">
 				<div>
@@ -58,7 +54,12 @@
 						alla home</a>
 				</div>
 			</c:when>
-			
+			<c:when test="${currentOrder != null}">
+				<div>
+					<a href='<c:url value="/faces/order.jsp" />'>Torna ai dettagli
+						dell'ordine</a>
+				</div>
+			</c:when>
 
 			<c:when test="${currentCustomer != null }">
 				<div>
@@ -71,6 +72,8 @@
 					<a href='<c:url value="/faces/firstPage.jsp" />'>Torna alla
 						home</a>
 				</div>
+
+
 			</c:otherwise>
 		</c:choose>
 	</f:view>
