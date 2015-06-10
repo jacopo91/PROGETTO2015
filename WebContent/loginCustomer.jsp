@@ -33,11 +33,11 @@
 			</div>
 		</h:form>
 		<div>
-			<a href='<c:url value="/faces/registrationCustomer.jsp" />'>Iscriviti
+			<a href='<c:url value="faces/registrationCustomer.jsp" />'>Iscriviti
 				se non l'hai ancora fatto!</a>
 		</div>
 		<div>
-			<a href='<c:url value="/faces/firstPage.jsp" />'>Torna alla home</a>
+			<a href='<c:url value="faces/firstPage.jsp" />'>Torna alla home</a>
 		</div>
 	</f:view>
 </body>
