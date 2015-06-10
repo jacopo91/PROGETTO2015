@@ -15,7 +15,6 @@
 			<li><a href="loginCustomer.jsp">Accesso
 					clienti</a></li>
 
-
 			<li><a href="loginAdministrator.jsp">Accesso
 					amministratori</a></li>
 		</ul>
