@@ -43,10 +43,10 @@
 				</c:when>
 				<c:otherwise>
 					<div>
-						<a href='<c:url value="/faces/newProvider.jsp" />'>Inserisci
+						<a href="newProvider.jsp">Inserisci
 							nuovo fornitore</a>
 					</div>
-					<a href='<c:url value="/faces/administratorConfirmed.jsp" />'>Torna
+					<a href="administratorConfirmed.jsp">Torna
 						alla home</a>
 				</c:otherwise>
 			</c:choose>

@@ -44,7 +44,6 @@
 			</c:if>
 			<h:form>
 				<div>
-					<!--  <a href='<c:url value="/faces/ordine.jsp" />'>Torna all'ordine</a>-->
 					<h:commandLink value="Torna all'ordine"
 						action="#{orderController.findOrder}">
 						<f:param name="id" value="#{orderController.currentOrder.id}" />

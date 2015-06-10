@@ -12,9 +12,9 @@
 	<f:view>
 		<h1>BENVENUTO</h1>
 		<ul>
-			<li><a href='<c:url value="faces/loginCustomer.jsp" />'>Accesso
+			<li><a href="loginCustomer.jsp">Accesso
 					clienti</a></li>
-			<li><a href='<c:url value="faces/loginAdministrator.jsp" />'>Accesso
+			<li><a href="loginAdministrator.jsp"> Accesso
 					amministratori</a></li>
 		</ul>
 	</f:view>

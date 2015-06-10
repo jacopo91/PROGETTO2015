@@ -32,7 +32,7 @@
 			</div>
 		</h:form>
 		<div>
-			<a href='<c:url value="/faces/firstPage.jsp" />'>Torna alla home</a>
+			<a href="firstPage.jsp">Torna alla home</a>
 		</div>
 	</f:view>
 </body>

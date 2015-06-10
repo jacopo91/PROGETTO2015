@@ -66,13 +66,13 @@
 				</table>
 
 				<div>
-					<a href='<c:url value="/faces/customerConfirmed.jsp" />'>Torna
+					<a href="customerConfirmed.jsp">Torna
 						alla home</a>
 				</div>
 			</c:if>
 			<c:if test="${currentAdministrator != null}">
 				<div>
-					<a href='<c:url value="/faces/administratorConfirmed.jsp" />'>Torna
+					<a href="administratorConfirmed.jsp">Torna
 						alla home</a>
 				</div>
 			</c:if>
