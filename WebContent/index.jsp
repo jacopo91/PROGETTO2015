@@ -4,6 +4,6 @@
 <html lang="en">
   <head>
     <title>PROGETTO-SIW</title>
-    <meta content="firstPage.jsp" />
+    <meta http-equiv="refresh" content="0; url=faces/firstPage.jsp" />
   </head>
 </html>
