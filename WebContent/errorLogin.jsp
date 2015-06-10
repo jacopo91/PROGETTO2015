@@ -9,6 +9,6 @@
 <body>
 <h1>Errore di login</h1>
 <div>Email o password errati!</div>
-<div><a href='<c:url value="firstPage.jsp" />'> torna alla Home</a></div>
+<div><a href="firstPage.jsp"> torna alla Home</a></div>
 </body>
 </html>

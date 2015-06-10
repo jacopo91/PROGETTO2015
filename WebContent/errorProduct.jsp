@@ -10,6 +10,6 @@
 <body>
 <h1>Errore Prodotto</h1>
 <div>Il codice inserito e' gia stato utilizzato</div>
-<div><a href='<c:url value="newProduct.jsp" />'>indietro</a></div>
+<div><a href="newProduct.jsp">indietro</a></div>
 </body>
 </html>

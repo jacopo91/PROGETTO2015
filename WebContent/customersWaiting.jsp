@@ -34,7 +34,7 @@
 				</c:forEach>
 			</table>
 			<div>
-				<a href='<c:url value="/faces/administratorConfirmed.jsp" />'>Torna
+				<a href="administratorConfirmed.jsp">Torna
 					alla home</a>
 			</div>
 		</h:form>

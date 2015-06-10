@@ -10,6 +10,6 @@
 <body>
 <h1>Errore Fornitore</h1>
 <div>Esiste gia un fornitore con questo nome</div>
-<div><a href='<c:url value="newProvider.jsp" />'>indietro</a></div>
+<div><a href="newProvider.jsp">indietro</a></div>
 </body>
 </html>
