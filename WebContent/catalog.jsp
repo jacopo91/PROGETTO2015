@@ -46,30 +46,30 @@
 		<c:choose>
 			<c:when test="${currentAdministrator != null}">
 				<div>
-					<a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci
+					<a href="newProduct.jsp">Inserisci
 						nuovo prodotto</a>
 				</div>
 				<div>
-					<a href='<c:url value="/faces/administratorConfirmed.jsp" />'>Torna
+					<a href="administratorConfirmed.jsp">Torna
 						alla home</a>
 				</div>
 			</c:when>
 			<c:when test="${currentOrder != null}">
 				<div>
-					<a href='<c:url value="/faces/order.jsp" />'>Torna ai dettagli
+					<a href="order.jsp">Torna ai dettagli
 						dell'ordine</a>
 				</div>
 			</c:when>
 
 			<c:when test="${currentCustomer != null }">
 				<div>
-					<a href='<c:url value="/faces/customerConfirmed.jsp" />'>Torna
+					<a href="customerConfirmed.jsp">Torna
 						alla home</a>
 				</div>
 			</c:when>
 			<c:otherwise>
 				<div>
-					<a href='<c:url value="/faces/firstPage.jsp" />'>Torna alla
+					<a href="firstPage.jsp">Torna alla
 						home</a>
 				</div>
 
