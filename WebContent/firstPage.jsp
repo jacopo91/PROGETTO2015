@@ -14,11 +14,9 @@
 		<ul>
 			<li><a href="loginCustomer.jsp">Accesso
 					clienti</a></li>
-<<<<<<< HEAD
-			<li><a href="loginAdministrator.jsp"> Accesso
-=======
+
+
 			<li><a href="loginAdministrator.jsp">Accesso
->>>>>>> refs/remotes/origin/master
 					amministratori</a></li>
 		</ul>
 	</f:view>
