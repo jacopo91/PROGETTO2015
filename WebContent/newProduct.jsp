@@ -47,8 +47,8 @@
 				<h:message for="quantity" />
 			</div>
 			<div>
-				<h:commandButton value="Aggiungi"
-					action="#{productController.createProduct}" />
+				<h:commandButton action="#{productController.createProduct}"
+					value="Aggiungi" />
 			</div>
 
 			<div>
