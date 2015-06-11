@@ -41,7 +41,7 @@
 		<h:form>
 			<div>
 				Quantita' Magazzino:
-				<h:inputText value="#{productController.quantity}"
+				<h:inputText value="#{productController.quantity}" required="true"
 					requiredMessage="Quantita' obbligatoria"
 					converterMessage="Quantita' deve essere un numero" id="quantity" />
 				<h:message for="quantity" />
