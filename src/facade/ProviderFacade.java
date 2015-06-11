@@ -45,7 +45,7 @@ public class ProviderFacade {
 		em.merge(provider);		
 	}
 
-	public Provider findProduct(String name) {
+	public Provider findProvider(String name) {
 		TypedQuery<Provider> query = em.createQuery("SELECT p FROM Provider p WHERE p.name = :name", Provider.class);
 		query.setParameter("name", name);
 		Provider provider = query.getSingleResult();

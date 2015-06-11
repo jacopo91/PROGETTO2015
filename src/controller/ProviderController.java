@@ -104,7 +104,7 @@ public class ProviderController {
 	public String createProvider() {
 		String nextPage = "errorProvider";
 		try {
-			this.provider = providerFacade.findProduct(name);
+			this.provider = providerFacade.findProvider(name);//???
 		}
 		catch (Exception e) {
 		this.provider = providerFacade.createProvider(name, email, phoneNumber,pIva,street,city,country);
