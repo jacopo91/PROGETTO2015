@@ -7,12 +7,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Nuovo provider</title>
+<title>NUOVO FORNITORE</title>
 </head>
 <body>
-
+<h1>Inserisci un nuovo fornitore</h1>
 	<f:view>
-		<h1>INSERISCI UN NUOVO FORNITORE</h1>
 		<h:form>
 			<div>
 				Nome:
