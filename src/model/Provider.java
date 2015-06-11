@@ -11,9 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 @Entity
+@NamedQuery(name = "findAllProviders",query = "SELECT pr FROM Provider pr")
 public class Provider {
 
 	@Id
@@ -30,7 +32,7 @@ public class Provider {
 	@ManyToMany (fetch = FetchType.EAGER)
 	private List<Product> products;
 
-	@OneToOne (cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne 
 	private Address address;
 
 	public Provider(String name, String phoneNumber,String pIva, String email,Address address) {
@@ -39,7 +41,6 @@ public class Provider {
 		this.pIva=pIva;
 		this.email = email;
 		this.address = address;
-		this.products = new ArrayList<Product>();
 	}
 
 	public Provider() {
@@ -95,11 +96,15 @@ public class Provider {
 		this.products.add(product);
 	}
 
+	public void removeProduct(Product product) {
+		this.products.add(product);
+	}
+	@Override
 	public boolean equals(Object obj) {
 		Provider provider = (Provider)obj;
 		return this.name.equals(provider.getName());
 	}
-
+	@Override
 	public int hashCode() {
 		return this.name.hashCode();
 	}

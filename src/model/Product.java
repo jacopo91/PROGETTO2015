@@ -10,9 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+@NamedQuery(name="findAllProducts", query = "SELECT p FROM Product p")
 public class Product {
 
 	@Id
@@ -32,13 +34,14 @@ public class Product {
 	@ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
 	private List<Provider> providers;
 	
-	public Product(String name, Float price, String description, String code, int quantity) {
+	public Product(String name, Float price, String description, String code, int quantity,Provider provider) {
 		this.name = name;
 		this.price = price;
 		this.description = description;
 		this.code = code;
 		this.quantity = quantity;
 		this.providers = new ArrayList<Provider>();
+		this.providers.add(provider);
 	}
 	
 	public Product() {
@@ -74,8 +77,15 @@ public class Product {
 	public void setProviders(List<Provider> providers) {
 		this.providers = providers;
 	}
+	
 	public void addProvider(Provider provider){
 		this.providers.add(provider);
+		provider.addProduct(this);
+	}
+	
+	public void removeProvider(Provider provider){
+		this.providers.remove(provider);
+		provider.removeProduct(this);
 	}
 	
 	public Float getPrice() {
