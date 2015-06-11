@@ -13,14 +13,14 @@ import model.Provider;
 import java.util.Iterator;
 import java.util.List;
 
-@Stateless
+@Stateless(name="productFacade")
 public class ProductFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")
 	private EntityManager em;
 
-	public Product createProduct(String name, String code, Float price, String description, int quantity) {
-		Product product = new Product(name, price, description, code, quantity);
+	public Product createProduct(String name, String code, Float price, String description, int quantity,Provider provider) {
+		Product product = new Product(name, price, description, code, quantity, provider);
 		em.persist(product);
 		return product;
 	}

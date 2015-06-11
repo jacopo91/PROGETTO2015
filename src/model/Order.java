@@ -44,7 +44,8 @@ public class Order {
 	@ManyToOne
 	private Customer customer;
 	
-	public Order () {
+	public Order (Customer customer) {
+		this.customer=customer;
 		this.creationTime = new Date();
 		this.state = "open";
 		this.orderLines = new ArrayList<OrderLine>();

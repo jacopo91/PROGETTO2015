@@ -12,7 +12,7 @@ import model.Product;
 import model.Provider;
 
 
-@Stateless
+@Stateless(name="providerFacade")
 public class ProviderFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")
@@ -20,6 +20,7 @@ public class ProviderFacade {
 
 	public Provider createProvider(String name, String email, String phoneNumber,String pIva,String street, String city, String country) {
 		Address address = new Address(street, city, country);
+		em.persist(address);
 		Provider provider = new Provider (name, email, phoneNumber,pIva, address);
 		em.persist(provider);
 		return provider;

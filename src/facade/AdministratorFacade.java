@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import model.Administrator;
 
-@Stateless
+@Stateless(name="administratorFacade")
 public class AdministratorFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")

@@ -14,38 +14,35 @@ import model.Order;
 import model.OrderLine;
 import model.Product;
 
-@Stateless
+@Stateless(name="orderFacade")
 public class OrderFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")
 	private EntityManager em;
 
 	public Order createOrder(Customer customer) {
-		Order order = new Order();
-		order.setCustomer(customer);
-		customer.addOrder(order);
+		Order order = new Order(customer);
 		em.persist(order);
-		em.merge(customer);
 		return order;
 	}
 
-	public void createOrderLine(Order order, Product prodotto, int quantita, Float prezzo){
-		OrderLine ol = null;
-		boolean trovato = false;
-		Iterator<OrderLine> iteratore = order.getOrderLines().iterator();
-		while (iteratore.hasNext() && !trovato){
-			ol = iteratore.next();
-			if (ol.getProduct().getCode().equals(prodotto.getCode())){
-				ol.setQuantity(ol.getQuantity()+quantita);
-				trovato = true;
-			}
-		}
-		if (!trovato){
-			ol = new OrderLine (prodotto, quantita, prezzo);
-			order.addOrderLine(ol);
-		}
-		em.merge(order);
-	}
+//	public void createOrderLine(Order order, Product prodotto, int quantita, Float prezzo){
+//		OrderLine ol = null;
+//		boolean trovato = false;
+//		Iterator<OrderLine> iteratore = order.getOrderLines().iterator();
+//		while (iteratore.hasNext() && !trovato){
+//			ol = iteratore.next();
+//			if (ol.getProduct().getCode().equals(prodotto.getCode())){
+//				ol.setQuantity(ol.getQuantity()+quantita);
+//				trovato = true;
+//			}
+//		}
+//		if (!trovato){
+//			ol = new OrderLine (prodotto, quantita, prezzo);
+//			order.addOrderLine(ol);
+//		}
+//		em.merge(order);
+//	}
 
 	public void closeOrder(Order order){
 		order.setState("closed"); 
@@ -65,6 +62,8 @@ public class OrderFacade {
 		List<Order> orders = query.getResultList();
 		return orders;
 	}
+	
+	
 
 
 	public Order getOrder(Long id) {
