@@ -103,4 +103,8 @@ public class Provider {
 	public int hashCode() {
 		return this.name.hashCode();
 	}
+
+	public void removeProduct(Product product) {
+		this.products.remove(product);
+	}
 }

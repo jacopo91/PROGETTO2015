@@ -162,7 +162,7 @@ public class ProductController {
 			this.product = productFacade.findProduct(code);
 		}
 		catch (Exception e) {
-			this.product = productFacade.createProduct(name, code, price, description,quantity);
+			this.product = productFacade.createProduct(name, code, price, description,quantity,provider);
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentProduct", this.product);
 			nextPage = "product";
 		}
