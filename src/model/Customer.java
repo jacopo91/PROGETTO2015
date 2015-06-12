@@ -11,14 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQuery(name="findAllCustomers",query="SELECT c FROM Customer c")
 public class Customer {
 
 	@Id
@@ -38,7 +36,7 @@ public class Customer {
 	private Date dateOfRegistration;
 	@Column(nullable = false)
 	private boolean confermato;//l'amministratore conferma il cliente una volta ricevuta la richiesta di registrazione 
-	@OneToOne
+	@OneToOne (cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private Address address;
 	@OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
     private List<Order> orders;

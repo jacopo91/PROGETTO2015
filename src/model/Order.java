@@ -14,14 +14,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQuery(name = "findAllOrders",query = "SELECT o FROM order o")
 @Table(name = "orders")
 public class Order {
 
@@ -37,7 +35,7 @@ public class Order {
 	private Date evasionTime;//evasione dall'amministratore
 	@Column(nullable = false)
 	private String state;//stato dell'ordine
-	@OneToMany (fetch = FetchType.EAGER)
+	@OneToMany (cascade= {CascadeType.MERGE,CascadeType.REMOVE},fetch = FetchType.EAGER)
 	@JoinColumn(name = "orders_id")
 	private List<OrderLine> orderLines;
 
@@ -62,6 +60,8 @@ public class Order {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	
 
 	public Customer getCustomer() {
 		return customer;
