@@ -26,23 +26,23 @@ public class OrderFacade {
 		return order;
 	}
 
-//	public void createOrderLine(Order order, Product prodotto, int quantita, Float prezzo){
-//		OrderLine ol = null;
-//		boolean trovato = false;
-//		Iterator<OrderLine> iteratore = order.getOrderLines().iterator();
-//		while (iteratore.hasNext() && !trovato){
-//			ol = iteratore.next();
-//			if (ol.getProduct().getCode().equals(prodotto.getCode())){
-//				ol.setQuantity(ol.getQuantity()+quantita);
-//				trovato = true;
-//			}
-//		}
-//		if (!trovato){
-//			ol = new OrderLine (prodotto, quantita, prezzo);
-//			order.addOrderLine(ol);
-//		}
-//		em.merge(order);
-//	}
+	public void createOrderLine(Order order, Product prodotto, int quantita, Float prezzo){
+		OrderLine ol = null;
+		boolean trovato = false;
+		Iterator<OrderLine> iteratore = order.getOrderLines().iterator();
+		while (iteratore.hasNext() && !trovato){
+			ol = iteratore.next();
+			if (ol.getProduct().getCode().equals(prodotto.getCode())){
+				ol.setQuantity(ol.getQuantity()+quantita);
+				trovato = true;
+			}
+		}
+		if (!trovato){
+			ol = new OrderLine (prodotto, quantita, prezzo);
+			order.addOrderLine(ol);
+		}
+		em.merge(order);
+	}
 
 	public void closeOrder(Order order){
 		order.setState("closed"); 
