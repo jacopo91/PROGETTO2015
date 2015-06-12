@@ -14,31 +14,49 @@ import model.Provider;
 
 @ManagedBean
 public class ProductController {
+	@EJB(name="pFacade")
+	private ProductFacade productFacade;
+	@EJB(name="prFacade")
+	private ProviderFacade providerFacade;
 
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
+	@ManagedProperty(value="#{param.currentProduct}")
+	private Product product;
+	@ManagedProperty(value="#{param.idProvider}")
+	private Long idProvider;
 	private String name;
 	private Float price;
 	private String description;
 	private String code;
-	@ManagedProperty(value="#{currentProduct}")
-	private Product product;
+
 	private List<Product> products;
 	private int quantity;
 	private String message;
 
-	@ManagedProperty(value="#{param.idProvider}")
-	private Long idProvider;
+	
 	private Provider provider;
 	private List<Provider> providers;
 
-	@EJB
-	private ProductFacade productFacade;
-	@EJB
-	private ProviderFacade providerFacade;
-
+	
 
 	
+
+	public ProductFacade getProductFacade() {
+		return productFacade;
+	}
+
+	public void setProductFacade(ProductFacade productFacade) {
+		this.productFacade = productFacade;
+	}
+
+	public ProviderFacade getProviderFacade() {
+		return providerFacade;
+	}
+
+	public void setProviderFacade(ProviderFacade providerFacade) {
+		this.providerFacade = providerFacade;
+	}
 
 	public Long getId() {
 		return id;
@@ -179,7 +197,7 @@ public class ProductController {
 
 
 	public String listProducts() {
-		this.products = productFacade.getAllProducts();
+		this.products = this.productFacade.getAllProducts();
 		this.setMessage("Catalogo prodotti");
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("currentProduct");
 		return "catalog"; 

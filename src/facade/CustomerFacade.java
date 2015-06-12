@@ -11,7 +11,7 @@ import model.Customer;
 import java.util.Date;
 import java.util.List;
 
-@Stateless(name="customerFacade")
+@Stateless
 public class CustomerFacade {
 	
 	@PersistenceContext(unitName = "progetto-siw")
