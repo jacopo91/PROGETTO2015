@@ -13,12 +13,14 @@ import model.Provider;
 import java.util.Iterator;
 import java.util.List;
 
-@Stateless(name="productFacade")
+@Stateless(name="pFacade")
 public class ProductFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")
 	private EntityManager em;
 
+	public ProductFacade(){}
+	
 	public Product createProduct(String name, String code, Float price, String description, int quantity,Provider provider) {
 		Product product = new Product(name, price, description, code, quantity, provider);
 		em.persist(product);
@@ -38,7 +40,7 @@ public class ProductFacade {
 	}
 
 	public List<Product> getAllProducts(){
-		TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p ORDER BY p.code", Product.class);
+		TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p", Product.class);
 		List<Product> products = query.getResultList();
 		return products;
 	}

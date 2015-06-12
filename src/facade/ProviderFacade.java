@@ -12,7 +12,7 @@ import model.Product;
 import model.Provider;
 
 
-@Stateless(name="providerFacade")
+@Stateless
 public class ProviderFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")

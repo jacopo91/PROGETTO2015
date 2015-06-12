@@ -14,7 +14,7 @@ import model.Order;
 import model.OrderLine;
 import model.Product;
 
-@Stateless(name="orderFacade")
+@Stateless
 public class OrderFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")
