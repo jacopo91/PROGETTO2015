@@ -6,12 +6,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import model.Administrator;
 
-@Stateless
+@Stateless(name="aFacade")
 public class AdministratorFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")
 	private EntityManager em;
 		
+	public AdministratorFacade(){}
+	
 	public Administrator getAdministrator(String username) {
 		TypedQuery<Administrator> query = em.createQuery("SELECT adm FROM Administrator adm WHERE adm.username = :username", Administrator.class);
 		query.setParameter("username", username);

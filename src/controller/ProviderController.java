@@ -24,7 +24,7 @@ public class ProviderController {
 	private String city;
 	private String country;
 
-	@EJB
+	@EJB(name="prFacade")
 	private ProviderFacade providerFacade;
 
 	public Long getId() {
@@ -41,6 +41,24 @@ public class ProviderController {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	
+
+	public String getpIva() {
+		return pIva;
+	}
+
+	public void setpIva(String pIva) {
+		this.pIva = pIva;
+	}
+
+	public ProviderFacade getProviderFacade() {
+		return providerFacade;
+	}
+
+	public void setProviderFacade(ProviderFacade providerFacade) {
+		this.providerFacade = providerFacade;
 	}
 
 	public String getEmail() {
@@ -104,7 +122,7 @@ public class ProviderController {
 	public String createProvider() {
 		String nextPage = "errorProvider";
 		try {
-			this.provider = providerFacade.findProvider(name);//???
+			this.provider = providerFacade.findProvider(name);
 		}
 		catch (Exception e) {
 		this.provider = providerFacade.createProvider(name, email, phoneNumber,pIva,street,city,country);

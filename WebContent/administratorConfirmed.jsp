@@ -16,13 +16,18 @@
 			<h:form>
 				<li><h:commandLink
 						action="#{customerController.findSuspendedCustomers}"
-						value="Gestione Clienti" /></li>
+						value="Gestione Clienti in Sospeso" /></li>
+				<li><h:commandLink
+						action="#{customerController.findConfirmedCustomers}"
+						value="Elenco Clienti" /></li>
 				<li><h:commandLink action="#{productController.listProducts}"
 						value="Gestione Prodotti" /></li>
 				<li><h:commandLink action="#{productController.listProviders}"
 						value="Gestione Fornitori" /></li>
 				<li><h:commandLink action="#{orderController.listClosedOrders}"
-						value="Gestione Ordini" /></li>
+						value="Gestione Ordini da Evadere" /></li>
+				<li><h:commandLink action="#{orderController.listClosedOrders}"
+						value="Elenco Ordini" /></li>
 				<li><h:commandLink
 						action="#{administratorController.logoutAdministrator}"
 						value="Logout" /></li>

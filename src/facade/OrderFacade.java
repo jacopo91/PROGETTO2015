@@ -14,7 +14,7 @@ import model.Order;
 import model.OrderLine;
 import model.Product;
 
-@Stateless
+@Stateless(name="oFacade")
 public class OrderFacade {
 
 	@PersistenceContext(unitName = "progetto-siw")
@@ -26,6 +26,8 @@ public class OrderFacade {
 		return order;
 	}
 
+	public OrderFacade(){}
+	
 	public void createOrderLine(Order order, Product prodotto, int quantita, Float prezzo){
 		OrderLine ol = null;
 		boolean trovato = false;

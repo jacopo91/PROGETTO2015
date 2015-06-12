@@ -37,8 +37,7 @@
 					required="false" cols="20" rows="5" />
 
 			</div>
-		</h:form>
-		<h:form>
+
 			<div>
 				Quantita' Magazzino:
 				<h:inputText value="#{productController.quantity}"
@@ -46,17 +45,19 @@
 					converterMessage="Quantita' deve essere un numero" id="quantity" />
 				<h:message for="quantity" />
 			</div>
-			<div>
-				<h:commandButton action="#{productController.createProduct}"
-					value="Aggiungi" />
-			</div>
 
-			<div>
-				<h:commandLink action="#{productController.listProducts}"
-					value="Torna al catalogo" />
-			</div>
+
+		
+		<div>
+			<h:commandButton action="#{productController.createProduct}"
+				value="Aggiungi" />
+		</div>
+
+		<div>
+			<h:commandLink action="#{productController.listProducts}"
+				value="Torna al catalogo" />
+		</div>
 		</h:form>
-
 	</f:view>
 </body>
 </html>

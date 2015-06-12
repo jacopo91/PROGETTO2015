@@ -28,6 +28,9 @@ public class Product {
 	private Float price;
 	@Column(nullable = false)
 	private int quantity;
+	@Column(nullable = false)
+	private Provider provider;
+	
 	
 	@ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
 	private List<Provider> providers;
@@ -69,6 +72,17 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
+	
+	public Provider getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Provider provider) {
+		this.provider = provider;
+	}
+
 	public List<Provider> getProviders() {
 		return providers;
 	}

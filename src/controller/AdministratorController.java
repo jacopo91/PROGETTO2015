@@ -18,7 +18,7 @@ public class AdministratorController {
 		private String password;
 		private Date dateOfBirth;
 		private Administrator currentAdministrator;
-		@EJB
+		@EJB(name="aFacade")
 		private AdministratorFacade administratorFacade;
 
 		public Long getId() {
@@ -27,6 +27,16 @@ public class AdministratorController {
 
 		public void setId(Long id) {
 			this.id = id;
+		}
+
+		
+		
+		public AdministratorFacade getAdministratorFacade() {
+			return administratorFacade;
+		}
+
+		public void setAdministratorFacade(AdministratorFacade administratorFacade) {
+			this.administratorFacade = administratorFacade;
 		}
 
 		public String getFirstName() {

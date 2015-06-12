@@ -11,12 +11,14 @@ import model.Customer;
 import java.util.Date;
 import java.util.List;
 
-@Stateless
+@Stateless(name="cFacade")
 public class CustomerFacade {
 	
 	@PersistenceContext(unitName = "progetto-siw")
 	private EntityManager em;
 
+	public CustomerFacade(){}
+	
 	public void createCustomer(String name, String lastname, String email, String password, Date dateOfBirth, String street, String city, String country) {
 		Address address = new Address(street,city,country);
 		em.persist(address);
@@ -47,6 +49,12 @@ public class CustomerFacade {
 		return query.getResultList();
 	}
 
+	public List<Customer> getConfirmedCustomers() {
+		TypedQuery<Customer> query = em.createQuery("SELECT c FROM Customer c WHERE c.confermato = :confermato", Customer.class);
+		query.setParameter("confermato", true);
+		return query.getResultList();
+	}
+	
 	public void confirmCustomer(Customer customer) {
 		customer.setConfermato(true);
 		em.merge(customer);

@@ -22,7 +22,7 @@ public class CustomerController {
 	private String password;
 	private Date dateOfBirth;
 	private Customer currentCustomer;
-	@EJB
+	@EJB(name="cFacade")
 	private CustomerFacade customerFacade;
 	private Customer customer;
 	private List<Customer> customers;
@@ -40,6 +40,17 @@ public class CustomerController {
 
 	public String getFirstName() {
 		return firstName;
+	}
+
+	
+	
+	
+	public CustomerFacade getCustomerFacade() {
+		return customerFacade;
+	}
+
+	public void setCustomerFacade(CustomerFacade customerFacade) {
+		this.customerFacade = customerFacade;
 	}
 
 	public void setFirstName(String firstName) {
@@ -171,6 +182,11 @@ public class CustomerController {
 	public String findSuspendedCustomers (){
 		this.customers = customerFacade.getSuspendedCustomers();
 		return "customersWaiting";
+	}
+	
+	public String findConfirmedCustomers (){
+		this.customers = customerFacade.getConfirmedCustomers();
+		return "allCustomers";
 	}
 	
 }

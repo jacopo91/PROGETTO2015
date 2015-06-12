@@ -59,12 +59,15 @@
 					action="#{providerController.createProvider}" />
 			</div>
 
+		
 		</h:form>
-		<div>
-			<h:commandLink action="#{productController.listProviders}"
-				value="Torna alla lista dei fornitori">
-			</h:commandLink>
-		</div>
+		<h:form>
+					<div>
+						<h:commandLink action="#{productController.listProviders}"
+							value="Torna alla lista dei fornitori">
+						</h:commandLink>
+					</div>
+				</h:form>
 	</f:view>
 </body>
 </html>

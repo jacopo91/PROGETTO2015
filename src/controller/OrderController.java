@@ -19,9 +19,9 @@ public class OrderController {
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private Date creationTime;
-	@ManagedProperty(value="#{currentOrder}")
+	@ManagedProperty(value="#{param.currentOrder}")
 	private Order currentOrder;
-	@ManagedProperty(value="#{currentCustomer}")
+	@ManagedProperty(value="#{param.currentCustomer}")
 	private Customer customer;
 	private Date closingTime;
 	private Date evasionTime;
@@ -33,14 +33,37 @@ public class OrderController {
 	@ManagedProperty(value="#{param.idProduct}")
 	private Long idProduct;
 
-	@EJB
+	@EJB(name="oFacade")
 	private OrderFacade orderFacade;
-	@EJB 
+	@EJB(name="pFacade")
 	private ProductFacade productFacade;
 
 	public Long getId() {
 		return id;
 	}
+
+	
+	public OrderFacade getOrderFacade() {
+		return orderFacade;
+	}
+
+	
+	
+
+	public void setOrderFacade(OrderFacade orderFacade) {
+		this.orderFacade = orderFacade;
+	}
+
+
+	public ProductFacade getProductFacade() {
+		return productFacade;
+	}
+
+
+	public void setProductFacade(ProductFacade productFacade) {
+		this.productFacade = productFacade;
+	}
+
 
 	public void setId(Long id) {
 		this.id = id;
