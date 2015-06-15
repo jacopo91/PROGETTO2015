@@ -21,7 +21,7 @@ public class ProductController {
 
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-	@ManagedProperty(value="#{sessionScope['currentProduct']}")
+	@ManagedProperty(value="#{currentProduct}")
 	private Product product;
 	@ManagedProperty(value="#{param.idProvider}")
 	private Long idProvider;
@@ -37,10 +37,6 @@ public class ProductController {
 	
 	private Provider provider;
 	private List<Provider> providers;
-
-	
-
-	
 
 	public ProductFacade getProductFacade() {
 		return productFacade;
@@ -177,17 +173,17 @@ public class ProductController {
 
 
 	public String createProduct() {
-//		this.product = productFacade.createProduct(name, code, price, description, quantity, provider);
-//		this.provider.addProduct(this.product);
-//		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentProduct", this.product);
-//		return "product";
+	
 		String nextPage = "errorProduct";
 		try {
 			this.product = productFacade.findProduct(code);
 		}
 		catch (Exception e) {
-		this.product = productFacade.createProduct(name, code, price, description, quantity, provider);
-		nextPage = "product"; 
+			this.product = productFacade.createProduct(name, code, price, description, quantity, provider);
+			this.product = productFacade.findProduct(code);
+			//this.provider.addProduct(this.product);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentProduct", this.product);
+			nextPage= "product"; 
 		}
 		return nextPage;
 	}
