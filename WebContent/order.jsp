@@ -30,11 +30,11 @@
 			</table>
 			<table>
 				<tr>
-					<td><h:commandButton value="Esci"
+					<td><h:commandButton value="Prosegui in seguito"
 							action="#{orderController.fineInserimento}" /></td>
 					<c:if test="${currentOrder.state == 'open'}">
 						<td><h:commandButton value="Aggiungi prodotto"
-								action="#{productController.listProducts}" /></td>
+								action="#{productController.listOrderProducts}" /></td>
 						<td><h:commandButton value="Chiudi ordine"
 								action="#{orderController.closeOrder}" /></td>
 					</c:if>

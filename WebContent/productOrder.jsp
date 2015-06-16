@@ -13,62 +13,29 @@
 		<div>Codice: ${productController.product.code}</div>
 		<div>Prezzo: ${productController.product.price}</div>
 		<div>Descrizione: ${productController.product.description}</div>
-		<div>Lista Fornitori:</div>
 
-		<c:forEach var="provider" items="#{productController.providers}">
-			<h:form>
-				<tr>
-					<td><h:commandLink action="#{providerController.findProvider}"
-							value="#{provider.name}">
-							<f:param name="id" value="#{provider.id}" />
-						</h:commandLink></td>
-				</tr>
-			</h:form>
-
-		</c:forEach>
-		<c:if test="${currentOrder != null}">
-			<c:if test="${currentOrder.state == 'open'}">
-				<h:form>
-					<div>
-						Quantità:
-						<h:inputText value="#{orderController.quantity}"
-							requiredMessage="Quantità obbligatoria"
-							converterMessage="Quantità deve essere un numero" id="quantity" />
-						<h:message for="quantity" />
-						<h:commandButton value="Aggiungi"
-							action="#{orderController.addOrderProduct}">
-							<f:param name="idProduct" value="#{productController.product.id}" />
-						</h:commandButton>
-					</div>
-				</h:form>
-			</c:if>
+		<c:if test="${currentOrder.state == 'open'}">
 			<h:form>
 				<div>
-					<h:commandLink value="Torna all'ordine"
-						action="#{orderController.findOrder}">
-						<f:param name="id" value="#{orderController.currentOrder.id}" />
-					</h:commandLink>
+					Quantità:
+					<h:inputText value="#{orderController.quantity}"
+						requiredMessage="Quantità obbligatoria"
+						converterMessage="Quantità deve essere un numero" id="quantity" />
+					<h:message for="quantity" />
+					<h:commandButton value="Aggiungi"
+						action="#{orderController.addOrderProduct}">
+						<f:param name="idProduct" value="#{productController.product.id}" />
+					</h:commandButton>
 				</div>
 			</h:form>
 		</c:if>
+		<h:form>
+			<div>
+				<a href="order.jsp">Torna all'ordine</a>
+			</div>
+		</h:form>
 
-
-		<c:if test="${currentAdministrator != null}">
-
-			<h:form>
-				<div>
-					<h:commandLink action="#{productController.listProviders}"
-						value="Inserisci fornitori" />
-				</div>
-			</h:form>
-			<h:form>
-				<div>
-					<a href="administratorConfirmed.jsp">Torna alla home</a>
-				</div>
-			</h:form>
-		</c:if>
 		<c:if test="${currentCustomer != null}">
-
 
 			<h:form>
 				<div>
@@ -76,16 +43,6 @@
 				</div>
 			</h:form>
 		</c:if>
-				<h:form>
-					<div>
-						<a href="firstPage.jsp">Torna alla home</a>
-					</div>
-				</h:form>
-	
-
-
-
-
 
 	</f:view>
 </body>

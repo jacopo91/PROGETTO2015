@@ -9,12 +9,9 @@
 </head>
 <body>
 	<f:view>
-		<c:if test="${currentCustomer != null}">
-			<h1>I MIEI ORDINI</h1>
-		</c:if>
-		<c:if test="${currentAdministrator != null}">
-			<h1>ORDINI IN PRONTA EVASIONE</h1>
-		</c:if>
+
+		<h1>I MIEI ORDINI</h1>
+
 		<table>
 			<tr>
 				<th>ID</th>
@@ -22,10 +19,8 @@
 				<th>Data chiusura</th>
 				<th>Data evasione</th>
 				<th>Stato</th>
-				<c:if test="${currentAdministrator != null}">
-					<th>Cliente</th>
-				</c:if>
 			</tr>
+
 			<c:forEach var="order" items="#{orderController.orders}">
 				<tr>
 					<h:form>
@@ -38,44 +33,22 @@
 					<td>${order.closingTime}</td>
 					<td>${order.evasionTime}</td>
 					<td>${order.state}</td>
-					<c:if test="${currentAdministrator != null}">
-						<h:form>
-							<td><h:commandLink
-									action="#{customerController.findCustomer}"
-									value="#{order.customer.email}">
-									<f:param name="id" value="#{order.customer.id}" />
-								</h:commandLink></td>
-						</h:form>
-						<h:form>
-							<td><h:commandButton
-									action="#{orderController.evasionOrder}" value="EVADI">
-									<f:param name="id" value="#{order.id}" />
-								</h:commandButton></td>
-						</h:form>
-					</c:if>
+
 				</tr>
 			</c:forEach>
 		</table>
 		<h:form>
-			<c:if test="${currentCustomer != null}">
-				<table>
-					<tr>
-						<td><h:commandButton action="#{orderController.createOrder}"
-								value="Crea nuovo ordine" /></td>
-					</tr>
-				</table>
 
-				<div>
-					<a href="customerConfirmed.jsp">Torna
-						alla home</a>
-				</div>
-			</c:if>
-			<c:if test="${currentAdministrator != null}">
-				<div>
-					<a href="administratorConfirmed.jsp">Torna
-						alla home</a>
-				</div>
-			</c:if>
+			<div>
+				<h:commandButton action="#{orderController.createOrder}"
+					value="Crea nuovo ordine" />
+			</div>
+
+			<div>
+				<a href="customerConfirmed.jsp">Torna alla home</a>
+			</div>
+
+
 		</h:form>
 	</f:view>
 </body>

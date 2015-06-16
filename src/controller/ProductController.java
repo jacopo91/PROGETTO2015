@@ -201,6 +201,13 @@ public class ProductController {
 		return "catalog"; 
 	}
 	
+	public String listOrderProducts() {
+		this.products = this.productFacade.getAllProducts();
+		this.setMessage("Catalogo prodotti");
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("currentProduct");
+		return "catalogOrder"; 
+	}
+	
 	public String noLogListProducts() {
 		this.products = this.productFacade.getAllProducts();
 		this.setMessage("Catalogo prodotti");
@@ -213,6 +220,12 @@ public class ProductController {
 		this.providers = providerFacade.getProductProviders(product);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentProduct", this.product);
 		return "product";
+	}
+	
+	public String findOrderProduct() {
+		this.product = productFacade.getProduct(id);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentProduct", this.product);
+		return "productOrder";
 	}
 	
 	public String findNoLogProduct() {
