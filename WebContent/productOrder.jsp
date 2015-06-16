@@ -26,6 +26,33 @@
 			</h:form>
 
 		</c:forEach>
+		<c:if test="${currentOrder != null}">
+			<c:if test="${currentOrder.state == 'open'}">
+				<h:form>
+					<div>
+						Quantità:
+						<h:inputText value="#{orderController.quantity}"
+							requiredMessage="Quantità obbligatoria"
+							converterMessage="Quantità deve essere un numero" id="quantity" />
+						<h:message for="quantity" />
+						<h:commandButton value="Aggiungi"
+							action="#{orderController.addOrderProduct}">
+							<f:param name="idProduct" value="#{productController.product.id}" />
+						</h:commandButton>
+					</div>
+				</h:form>
+			</c:if>
+			<h:form>
+				<div>
+					<h:commandLink value="Torna all'ordine"
+						action="#{orderController.findOrder}">
+						<f:param name="id" value="#{orderController.currentOrder.id}" />
+					</h:commandLink>
+				</div>
+			</h:form>
+		</c:if>
+
+
 		<c:if test="${currentAdministrator != null}">
 
 			<h:form>
@@ -41,12 +68,25 @@
 			</h:form>
 		</c:if>
 		<c:if test="${currentCustomer != null}">
+
+
 			<h:form>
 				<div>
 					<a href="customerConfirmed.jsp">Torna alla home</a>
 				</div>
 			</h:form>
 		</c:if>
+				<h:form>
+					<div>
+						<a href="firstPage.jsp">Torna alla home</a>
+					</div>
+				</h:form>
+	
+
+
+
+
+
 	</f:view>
 </body>
 </html>
