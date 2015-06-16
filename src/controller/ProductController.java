@@ -200,6 +200,13 @@ public class ProductController {
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("currentProduct");
 		return "catalog"; 
 	}
+	
+	public String noLogListProducts() {
+		this.products = this.productFacade.getAllProducts();
+		this.setMessage("Catalogo prodotti");
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("currentProduct");
+		return "noLogCatalog"; 
+	}
 
 	public String findProduct() {
 		this.product = productFacade.getProduct(id);
@@ -208,6 +215,11 @@ public class ProductController {
 		return "product";
 	}
 	
+	public String findNoLogProduct() {
+		this.product = productFacade.getProduct(id);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentProduct", this.product);
+		return "noLogProduct";
+	}
 	public String deleteProduct(){
 		this.productFacade.deleteProduct(id);
 		this.products = productFacade.getAllProducts();

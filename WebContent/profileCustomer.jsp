@@ -9,33 +9,30 @@
 </head>
 <body>
 	<f:view>
+		<h1>${customerController.customer.firstName}
+			${customerController.customer.lastName}</h1>
+		<div>
+			<b>Email</b>: ${customerController.customer.email}
+		</div>
+		<div>
+			<b>Data di registrazione</b>:
+			${customerController.customer.dateOfRegistration}
+		</div>
+		<div>
+			<b>Data di nascita</b>: ${customerController.customer.dateOfBirth}
+		</div>
+		<div>
+			<b>Indirizzo</b>: ${customerController.customer.address.street}
+		</div>
+		<div>
+			<b>Citta'</b>: ${customerController.customer.address.city}
+		</div>
+		<div>
+			<b>Stato</b>: ${customerController.customer.address.country}
+		</div>
 		<h:form>
-			<h1>${customerController.customer.firstName}
-				${customerController.customer.lastName}</h1>
-			<div>
-				<b>Email</b>: ${customerController.customer.email}
-			</div>
-			<div>
-				<b>Data di registrazione</b>:
-				${customerController.customer.dateOfRegistration}
-			</div>
-			<div>
-				<b>Data di nascita</b>: ${customerController.customer.dateOfBirth}
-			</div>
-			<div>
-				<b>Indirizzo</b>: ${customerController.customer.address.street}
-			</div>
-			<div>
-				<b>Citta'</b>: ${customerController.customer.address.city}
-			</div>
-			<div>
-				<b>Stato</b>: ${customerController.customer.address.country}
-			</div>
-
-		
-			<div>
-				<a href="allCustomers.jsp">Torna alla lista clienti</a>
-			</div>
+			<h:commandLink action="#{customerController.findConfirmedCustomers}"
+				value="Torna all'elenco clienti" />
 		</h:form>
 	</f:view>
 </body>

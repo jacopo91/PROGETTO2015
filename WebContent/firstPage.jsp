@@ -15,7 +15,7 @@
 			<li><a href="loginCustomer.jsp">Accesso clienti</a></li>
 			<li><a href="loginAdministrator.jsp">Accesso amministratori</a></li>
 			<h:form>
-			<li><h:commandLink action="#{productController.listProducts }" value="Consulta il nostro catalogo prodotti" /></li>
+			<li><h:commandLink action="#{productController.noLogListProducts }" value="Consulta il nostro catalogo prodotti" /></li>
 			</h:form>
 		</ul>
 	</f:view>

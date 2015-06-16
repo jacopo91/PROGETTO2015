@@ -16,7 +16,7 @@
 
 		<h:form>
 			<h:commandLink action="#{productController.listProducts}"
-				value="Gestione Prodotti" />
+				value="Torna all'elenco prodotti" />
 		</h:form>
 	</f:view>
 </body>

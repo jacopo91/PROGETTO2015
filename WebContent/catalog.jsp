@@ -77,14 +77,7 @@
 						alla home</a>
 				</div>
 			</c:when>
-			<c:otherwise>
-				<div>
-					<a href="firstPage.jsp">Torna alla
-						home</a>
-				</div>
-
-
-			</c:otherwise>
+			
 		</c:choose>
 	</f:view>
 </body>
