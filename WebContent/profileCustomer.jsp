@@ -31,10 +31,10 @@
 			<div>
 				<b>Stato</b>: ${customerController.customer.address.country}
 			</div>
+
+		
 			<div>
-				<h:commandLink action="#{customerController.findSuspendedCustomers}"
-					value="Torna ai clienti in attesa">
-				</h:commandLink>
+				<a href="allCustomers.jsp">Torna alla lista clienti</a>
 			</div>
 		</h:form>
 	</f:view>

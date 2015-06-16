@@ -46,118 +46,84 @@ public class OrderController {
 	public OrderFacade getOrderFacade() {
 		return orderFacade;
 	}
-
-	
-	
-
 	public void setOrderFacade(OrderFacade orderFacade) {
 		this.orderFacade = orderFacade;
 	}
-
-
 	public ProductFacade getProductFacade() {
 		return productFacade;
 	}
-
-
 	public void setProductFacade(ProductFacade productFacade) {
 		this.productFacade = productFacade;
 	}
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public Date getCreationTime() {
 		return creationTime;
 	}
-
 	public void setCreationTime(Date creationTime) {
 		this.creationTime = creationTime;
 	}
-
 	public Order getCurrentOrder() {
 		return currentOrder;
 	}
-
 	public void setCurrentOrder(Order currentOrder) {
 		this.currentOrder = currentOrder;
 	}
-
 	public Customer getCustomer() {
 		return customer;
 	}
-
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-
 	public Date getClosingTime() {
 		return closingTime;
 	}
-
 	public void setClosingTime(Date closingTime) {
 		this.closingTime = closingTime;
 	}
-
 	public Date getEvasionTime() {
 		return evasionTime;
 	}
-
 	public void setEvasionTime(Date evasionTime) {
 		this.evasionTime = evasionTime;
 	}
-
-
 	public String getMessage() {
 		return message;
 	}
-
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
 	public List<Order> getOrders() {
 		return orders;
 	}
-
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-
 	public List<Product> getProducts() {
 		return products;
 	}
-
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-
 	public int getQuantity() {
 		return quantity;
 	}
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
 	public Long getIdProduct() {
 		return idProduct;
 	}
-
 	public void setIdProduct(Long idProduct) {
 		this.idProduct = idProduct;
 	}
-
 	public Order getOrder() {
 		return order;
 	}
-
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	
 	public String evasionOrder(){
 		String nextPage = "listCustomerOrders";
 		this.order = orderFacade.getOrder(id);
@@ -216,6 +182,13 @@ public class OrderController {
 		return "listCustomerOrders";
 	}
 
+	public String allOrders(){
+		return message;
+		
+	}
+	
+	
+	
 }
 
 

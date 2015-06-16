@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.Customer;
@@ -60,7 +61,7 @@ public class OrderFacade {
 	}
 
 	public List<Order> getAllClosedOrders(){
-		TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o WHERE o.state = 'closed'", Order.class);
+		Query query = em.createQuery("SELECT o FROM Order o WHERE o.state = 'closed'");
 		List<Order> orders = query.getResultList();
 		return orders;
 	}
@@ -83,5 +84,7 @@ public class OrderFacade {
 		em.merge(order);
 	}
 
+	
+	
 }
 

@@ -24,7 +24,7 @@
 						</h:commandLink></td>
 				</tr>
 			</h:form>
-			
+
 		</c:forEach>
 		<c:if test="${currentOrder != null}">
 			<c:if test="${currentOrder.state == 'open'}">
@@ -54,13 +54,36 @@
 
 
 		<c:if test="${currentAdministrator != null}">
+
 			<h:form>
 				<div>
 					<h:commandLink action="#{productController.listProviders}"
 						value="Inserisci fornitori" />
 				</div>
 			</h:form>
+			<h:form>
+				<div>
+					<a href="administratorConfirmed.jsp">Torna alla home</a>
+				</div>
+			</h:form>
 		</c:if>
+		<c:if test="${currentCustomer != null}">
+
+
+			<h:form>
+				<div>
+					<a href="customerConfirmed.jsp">Torna alla home</a>
+				</div>
+			</h:form>
+		</c:if>
+				<h:form>
+					<div>
+						<a href="firstPage.jsp">Torna alla home</a>
+					</div>
+				</h:form>
+	
+
+
 
 
 

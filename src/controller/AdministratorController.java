@@ -1,13 +1,17 @@
 package controller;
 
+
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import facade.AdministratorFacade;
+import facade.OrderFacade;
 import model.Administrator;
+import model.Order;
 
 @ManagedBean
 public class AdministratorController {
@@ -17,9 +21,12 @@ public class AdministratorController {
 		private String username;
 		private String password;
 		private Date dateOfBirth;
+		private List<Order>orders;
 		private Administrator currentAdministrator;
 		@EJB(name="aFacade")
 		private AdministratorFacade administratorFacade;
+		@EJB(beanName="orderFacade")
+		private OrderFacade orderFacade;
 
 		public Long getId() {
 			return id;
@@ -31,6 +38,22 @@ public class AdministratorController {
 
 		
 		
+		public List<Order> getOrders() {
+			return orders;
+		}
+
+		public void setOrders(List<Order> orders) {
+			this.orders = orders;
+		}
+
+		public OrderFacade getOrderFacade() {
+			return orderFacade;
+		}
+
+		public void setOrderFacade(OrderFacade orderFacade) {
+			this.orderFacade = orderFacade;
+		}
+
 		public AdministratorFacade getAdministratorFacade() {
 			return administratorFacade;
 		}
@@ -105,6 +128,11 @@ public class AdministratorController {
 		public String logoutAdministrator() {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("currentAdministrator");;
 			return "firstPage";
+		}
+		
+		public String listClosedOrders() {
+			this.orders = orderFacade.getAllClosedOrders();
+			return "administratorOrders";
 		}
 		
 }
