@@ -21,8 +21,8 @@ public class ProductFacade {
 
 	public ProductFacade(){}
 	
-	public Product createProduct(String name, String code, Float price, String description, int quantity,Provider provider) {
-		Product product = new Product(name, price, description, code, quantity, provider);
+	public Product createProduct(String name, String code, Float price, String description, int quantity) {
+		Product product = new Product(name, price, description, code, quantity);
 		em.persist(product);
 		return product;
 	}
@@ -82,6 +82,14 @@ public class ProductFacade {
 	public void addProvider(Provider provider, Product product) {
 		product.addProvider(provider);
 		em.merge(product);
+	}
+
+	public void deleteProduct(Product product) {
+		em.remove(product);
+	}
+	public void deleteProduct(Long id) {
+		Product product = em.find(Product.class, id);
+		deleteProduct(product);
 	}
 
 	

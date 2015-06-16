@@ -179,11 +179,9 @@ public class ProductController {
 			this.product = productFacade.findProduct(code);
 		}
 		catch (Exception e) {
-			this.product = productFacade.createProduct(name, code, price, description, quantity, provider);
-			this.product = productFacade.findProduct(code);
-			//this.provider.addProduct(this.product);
+			this.product = productFacade.createProduct(name, code, price, description, quantity);
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentProduct", this.product);
-			nextPage= "product"; 
+			nextPage= "productCreated"; 
 		}
 		return nextPage;
 	}
@@ -208,6 +206,12 @@ public class ProductController {
 		this.providers = providerFacade.getProductProviders(product);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentProduct", this.product);
 		return "product";
+	}
+	
+	public String deleteProduct(){
+		this.productFacade.deleteProduct(id);
+		this.products = productFacade.getAllProducts();
+		return "catalog";
 	}
 
 }

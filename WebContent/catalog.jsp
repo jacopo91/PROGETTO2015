@@ -38,6 +38,16 @@
 									action="#{productController.updateProductQuantity}">
 									<f:param name="id" value="#{product.id}" />
 								</h:commandButton></td>
+								
+								
+								<td><h:commandButton value="Rimuovi Prodotto"
+									action="#{productController.deleteProduct}">
+									<f:param name="id" value="#{product.id}" />
+								</h:commandButton></td>
+								
+								
+								
+								
 						</c:if>
 					</tr>
 				</h:form>

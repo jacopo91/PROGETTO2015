@@ -35,14 +35,13 @@ public class Product {
 	@ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
 	private List<Provider> providers;
 	
-	public Product(String name, Float price, String description, String code, int quantity, Provider provider) {
+	public Product(String name, Float price, String description, String code, int quantity) {
 		this.name = name;
 		this.price = price;
 		this.description = description;
 		this.code = code;
 		this.quantity = quantity;
 		this.providers = new ArrayList<Provider>();
-		this.providers.add(provider);
 	}
 	
 	public Product() {
