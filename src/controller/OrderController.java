@@ -50,7 +50,6 @@ public class OrderController {
 
 	public String createOrder() {
 		this.currentOrder = orderFacade.createOrder(new Date(),this.customer);
-		//this.customer.addOrder(this.currentOrder);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentOrder", this.currentOrder);
 		return "customerOrder";
 	}
