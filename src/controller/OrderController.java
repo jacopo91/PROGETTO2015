@@ -66,20 +66,20 @@ public class OrderController {
 			orderLine = orderLineFacade.createOrderLine(currentProduct, this.quantity,currentProduct.getPrice() );
 			this.currentOrder.addOrderLine(orderLine);
 			orderFacade.updateOrder(currentOrder);
-		
+
 		}
 		return "customerOrder";
 	}
-	
-	
-	
+
+
+
 	public String closeOrder() {
 		this.currentOrder.setCompletedTime(new Date());
 		this.currentOrder.setChiuso();
 		orderFacade.updateOrder(currentOrder);
 		customerFacade.updateCustomer(customer);
 		this.message = "Ordine chiuso correttamente!";
-		return "order";
+		return "listCustomerOrders";
 	}
 
 	public String processedOrder() {
@@ -88,7 +88,7 @@ public class OrderController {
 		orderFacade.updateOrder(currentOrder);
 		customerFacade.updateCustomer(customer);
 		this.message = "Ordine evaso correttamente!";
-		return "order";
+		return "listCustomerOrders";
 	}
 
 	public String suspendOrder() {
@@ -96,7 +96,7 @@ public class OrderController {
 		orderFacade.updateOrder(currentOrder);
 		customerFacade.updateCustomer(customer);
 		this.message = "Ordine sospeso!";
-		return "order";
+		return "listCustomerOrders";
 	}
 
 	public Long getId() {
@@ -201,6 +201,11 @@ public class OrderController {
 		this.currentOrder = orderFacade.getOrder(id);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentOrder", this.currentOrder);
 		return "orderAdministrator";
+	}
+	public String findOrderCustomer() {
+		this.currentOrder = orderFacade.getOrder(id);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentOrder", this.currentOrder);
+		return "customerOrder";
 	}
 
 	public String findOrder(Long id) {
