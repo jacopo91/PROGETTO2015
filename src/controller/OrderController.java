@@ -43,7 +43,7 @@ public class OrderController {
 	private OrderFacade orderFacade;
 	@EJB(name="pFacade")
 	private ProductFacade productFacade;
-	@EJB(beanName="customerFacade")
+	@EJB(beanName="cFacade")
 	private CustomerFacade customerFacade;
 	@EJB(beanName="orderLineFacade")
 	private OrderLineFacade orderLineFacade;
@@ -200,7 +200,7 @@ public class OrderController {
 	public String findOrder() {
 		this.currentOrder = orderFacade.getOrder(id);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentOrder", this.currentOrder);
-		return "order";
+		return "orderAdministrator";
 	}
 
 	public String findOrder(Long id) {

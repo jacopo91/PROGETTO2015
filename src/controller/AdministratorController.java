@@ -25,7 +25,7 @@ public class AdministratorController {
 		private Administrator currentAdministrator;
 		@EJB(name="aFacade")
 		private AdministratorFacade administratorFacade;
-		@EJB(beanName="orderFacade")
+		@EJB(beanName="oFacade")
 		private OrderFacade orderFacade;
 
 		public Long getId() {
@@ -130,15 +130,12 @@ public class AdministratorController {
 			return "firstPage";
 		}
 		
-		public String allOrders() {
-			this.orders = orderFacade.getAllClosedOrders();
-			return "administratorOrders";
-		}
+		
 		
 		
 		public String listClosedOrders() {
 			this.orders = orderFacade.getAllClosedOrders();
-			return "listAdministratorOrders";
+			return "administratorOrders";
 		}
 }
 

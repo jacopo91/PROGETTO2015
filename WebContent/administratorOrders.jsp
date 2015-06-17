@@ -71,10 +71,7 @@
 			</table>
 		</h:form>
 		<p></p>
-					<a href='<c:url value="/faces/administratorPage.jsp" />'
-							class="btn btn-default"><span
-							class="glyphicon glyphicon-home"></span>Torna alla tua area
-							riservata</a>
+					<a href="administratorConfirmed">Torna alla home</a>
 	</f:view>
 </body>
 </html>
