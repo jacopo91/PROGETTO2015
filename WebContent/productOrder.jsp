@@ -35,7 +35,7 @@
 		</c:if>
 		<h:form>
 			<div>
-				<a href="order.jsp">Torna all'ordine</a>
+				<a href="productOrder.jsp">Torna all'ordine</a>
 			</div>
 		</h:form>
 
