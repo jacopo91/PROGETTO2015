@@ -47,6 +47,7 @@
 
 			</c:forEach>
 		</table>
+		
 		<h:form>
 
 			<div>

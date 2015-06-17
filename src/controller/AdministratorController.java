@@ -130,10 +130,15 @@ public class AdministratorController {
 			return "firstPage";
 		}
 		
-		public String listClosedOrders() {
+		public String allOrders() {
 			this.orders = orderFacade.getAllClosedOrders();
 			return "administratorOrders";
 		}
 		
+		
+		public String listClosedOrders() {
+			this.orders = orderFacade.getAllClosedOrders();
+			return "listAdministratorOrders";
+		}
 }
 
