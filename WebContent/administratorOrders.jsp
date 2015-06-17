@@ -6,13 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Lista ordini</title>
- 
-  
+
+
 </head>
 <body>
 
 	<f:view>
-		<h1>Lista ordini </h1>
+		<h1>Lista ordini</h1>
 		<h:form>
 			<table>
 				<tr>
@@ -69,9 +69,10 @@
 							</c:choose></td>
 				</c:forEach>
 			</table>
+			<a href="administratorConfirmed.jsp">Torna alla home</a>
 		</h:form>
 		<p></p>
-					<a href="administratorConfirmed">Torna alla home</a>
+		
 	</f:view>
 </body>
 </html>

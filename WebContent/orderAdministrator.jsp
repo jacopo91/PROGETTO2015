@@ -104,19 +104,13 @@
 
 			<h:form>
 				<h:commandLink id="evadiOrdine"
-					action="#{orderController.processedOrder}"
-					styleClass="btn btn-success">
-					<i class="icon-search"></i>
-					<span class="glyphicon glyphicon-open"></span> Evadi ordine
+					action="#{orderController.processedOrder}"> Evadi ordine
 								</h:commandLink>
 			</h:form>
 			<br>
 			<h:form>
 				<h:commandLink id="sospendiOrdine"
-					action="#{orderController.suspendOrder}"
-					styleClass="btn btn-warning">
-					<i class="icon-search"></i>
-					<span class="glyphicon glyphicon-open"></span> Sospendi ordine
+					action="#{orderController.suspendOrder}">Sospendi ordine
 								</h:commandLink>
 			</h:form>
 			<br>
@@ -127,15 +121,14 @@
 			test="${currentOrder.chiuso == true && currentOrder.evaso == false && currentOrder.sospeso == true}">
 			<h:form>
 				<h:commandLink id="evadiOrdine"
-					action="#{orderController.processedOrder}"
-					styleClass="btn btn-success">
-					<i class="icon-search"></i>
-					<span class="glyphicon glyphicon-open"></span> Evadi ordine
+					action="#{orderController.processedOrder}"> Evadi ordine
 								</h:commandLink>
 			</h:form>
 			<br>
 		</c:if>
-		<a href="administratorConfirmed">Torna nella tua area riservata</a>
+		<h:form>
+			<a href="administratorConfirmed.jsp">Torna alla home</a>
+		</h:form>
 	</f:view>
 
 </body>
