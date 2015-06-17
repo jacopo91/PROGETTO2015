@@ -30,9 +30,9 @@
 							</h:commandLink></td>
 					</h:form>
 					<td>${order.creationTime}</td>
-					<td>${order.closingTime}</td>
-					<td>${order.evasionTime}</td>
-					<td>${order.state}</td>
+					<td>${order.completedTime}</td>
+					<td>${order.processedTime}</td>
+					
 					<h:form>
 						<td><h:commandLink
 								action="#{customerController.findCustomer}"

@@ -32,7 +32,7 @@
 				<tr>
 					<td><h:commandButton value="Prosegui in seguito"
 							action="#{orderController.fineInserimento}" /></td>
-					<c:if test="${currentOrder.state == 'open'}">
+					<c:if test="${currentOrder.chiuso == false}">
 						<td><h:commandButton value="Aggiungi prodotto"
 								action="#{productController.listOrderProducts}" /></td>
 						<td><h:commandButton value="Chiudi ordine"

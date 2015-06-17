@@ -26,15 +26,22 @@ public class Order {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;	
+	
+	@Column(nullable = false)
+	private boolean chiuso;
+	@Column(nullable = false)
+	private boolean evaso;
+	@Column(nullable = false)
+	private boolean sospeso;
+	
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationTime;//creazione dal cliente
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date closingTime;//chiusura dal cliente
+	private Date completedTime;//chiusura dal cliente
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date evasionTime;//evasione dall'amministratore
-	@Column(nullable = false)
-	private String state;//stato dell'ordine
+	private Date processedTime;//evasione dall'amministratore
+
 	@OneToMany (cascade= {CascadeType.MERGE,CascadeType.REMOVE},fetch = FetchType.EAGER)
 	@JoinColumn(name = "orders_id")
 	private List<OrderLine> orderLines;
@@ -44,10 +51,10 @@ public class Order {
 	
 	public Order(){}
 	
-	public Order (Customer customer) {
-		this.customer=customer;
-		this.creationTime = new Date();
-		this.state = "open";
+	public Order (Date creationTime,Customer customer) {
+		this.creationTime = creationTime;
+		this.customer = customer;
+		this.chiuso = false;
 		this.orderLines = new ArrayList<OrderLine>();
 	}
 	
@@ -58,6 +65,31 @@ public class Order {
 	public Long getId() {
 		return id;
 	}
+	
+	public boolean isChiuso() {
+		return chiuso;
+	}
+
+	public void setChiuso() {
+		this.chiuso = true;
+	}
+
+	public boolean isEvaso() {
+		return evaso;
+	}
+
+	public void setEvaso() {
+		this.evaso = true;
+	}
+
+	public boolean isSospeso() {
+		return sospeso;
+	}
+
+	public void setSospeso() {
+		this.sospeso = true;
+	}
+
 
 	public void setId(Long id) {
 		this.id = id;
@@ -81,20 +113,20 @@ public class Order {
 		this.creationTime = creationTime;
 	}
 
-	public Date getClosingTime() {
-		return closingTime;
+	public Date getCompletedTime() {
+		return completedTime;
 	}
 
-	public void setClosingTime(Date closingTime) {
-		this.closingTime = closingTime;
+	public void setCompletedTime(Date completedTime) {
+		this.completedTime = completedTime;
 	}
 
-	public Date getEvasionTime() {
-		return evasionTime;
+	public Date getProcessedTime() {
+		return processedTime;
 	}
 
-	public void setEvasionTime(Date evasiontime) {
-		this.evasionTime = evasiontime;
+	public void setProcessedTime(Date processedtime) {
+		this.processedTime = processedtime;
 	}
 
 	public List<OrderLine> getOrderLines() {
@@ -104,12 +136,15 @@ public class Order {
 	public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
 	}
-
-	public String getState() {
-		return state;
+	
+	public OrderLine checkOrderLine(Product product) {
+		OrderLine orderLine = new OrderLine();
+		for(OrderLine line : this.orderLines) {
+			if(line.getProduct().getId().equals(product.getId()))
+				orderLine = line;
+		}
+		return orderLine;
 	}
 
-	public void setState(String state) {
-		this.state = state;
-	}
+	
 }

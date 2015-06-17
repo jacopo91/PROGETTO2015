@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order_line")
+@Table(name = "orderLine")
 public class OrderLine {
 
 	@Id 

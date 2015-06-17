@@ -14,20 +14,24 @@
 		<div>Prezzo: ${productController.product.price}</div>
 		<div>Descrizione: ${productController.product.description}</div>
 
-		<c:if test="${currentOrder.state == 'open'}">
-			<h:form>
-				<div>
-					Quantità:
-					<h:inputText value="#{orderController.quantity}"
-						requiredMessage="Quantità obbligatoria"
-						converterMessage="Quantità deve essere un numero" id="quantity" />
-					<h:message for="quantity" />
-					<h:commandButton value="Aggiungi"
-						action="#{orderController.addOrderProduct}">
-						<f:param name="idProduct" value="#{productController.product.id}" />
-					</h:commandButton>
-				</div>
-			</h:form>
+		<c:if test="${currentOrder!=null && currentOrder.chiuso == false}">
+			<p>
+				<h:form>
+					<div>
+						Quantità:
+						<h:inputText value="#{orderController.quantity}"
+							requiredMessage="Quantità obbligatoria"
+							converterMessage="Quantità deve essere un numero" id="quantity" />
+						<h:message for="quantity" />
+					</div>
+					<h:commandLink id="addOrderLine"
+						action="#{orderController.addOrderLine}"
+						value=" Aggiungi al carrello">
+
+					</h:commandLink>
+
+				</h:form>
+			<p>
 		</c:if>
 		<h:form>
 			<div>

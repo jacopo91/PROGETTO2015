@@ -1,5 +1,14 @@
 package controller;
 
+import facade.OrderFacade;
+import facade.ProductFacade;
+import facade.OrderLineFacade;
+import facade.CustomerFacade;
+import model.OrderLine;
+import model.Customer;
+import model.Order;
+import model.Product;
+
 import java.util.Date;
 import java.util.List;
 
@@ -8,23 +17,20 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 
-import facade.OrderFacade;
-import facade.ProductFacade;
-import model.Customer;
-import model.Order;
-import model.Product;
-
 @ManagedBean
 public class OrderController {
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-	private Date creationTime;
-	@ManagedProperty(value="#{param.currentOrder}")
+
+	@ManagedProperty(value="#{sessionScope['currentOrder']}")
 	private Order currentOrder;
+
 	@ManagedProperty(value="#{param.currentCustomer}")
 	private Customer customer;
-	private Date closingTime;
-	private Date evasionTime;
+
+	@ManagedProperty(value="#{sessionScope['currentProduct']}")
+	private Product currentProduct;
+
 	private List<Order> orders;
 	private String message;
 	private List<Product> products;
@@ -37,12 +43,85 @@ public class OrderController {
 	private OrderFacade orderFacade;
 	@EJB(name="pFacade")
 	private ProductFacade productFacade;
+	@EJB(beanName="customerFacade")
+	private CustomerFacade customerFacade;
+	@EJB(beanName="orderLineFacade")
+	private OrderLineFacade orderLineFacade;
+
+	public String createOrder() {
+		this.currentOrder = orderFacade.createOrder(new Date(),this.customer);
+		//this.customer.addOrder(this.currentOrder);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentOrder", this.currentOrder);
+		return "customerOrder";
+	}
+
+	public String addOrderLine() {
+		OrderLine orderLine = this.currentOrder.checkOrderLine(currentProduct);
+		if(orderLine!= null){
+			orderLine.setQuantity(orderLine.getQuantity()+this.quantity);
+			orderLineFacade.updateOrderLine(orderLine);
+
+
+		} else {
+			orderLine = orderLineFacade.createOrderLine(currentProduct, this.quantity,currentProduct.getPrice() );
+			this.currentOrder.addOrderLine(orderLine);
+			orderFacade.updateOrder(currentOrder);
+		
+		}
+		return "customerOrder";
+	}
+	
+	
+	
+	public String closeOrder() {
+		this.currentOrder.setCompletedTime(new Date());
+		this.currentOrder.setChiuso();
+		orderFacade.updateOrder(currentOrder);
+		customerFacade.updateCustomer(customer);
+		this.message = "Ordine chiuso correttamente!";
+		return "order";
+	}
+
+	public String processedOrder() {
+		this.currentOrder.setProcessedTime(new Date());
+		this.currentOrder.setEvaso();
+		orderFacade.updateOrder(currentOrder);
+		customerFacade.updateCustomer(customer);
+		this.message = "Ordine evaso correttamente!";
+		return "order";
+	}
+
+	public String suspendOrder() {
+		this.currentOrder.setSospeso();
+		orderFacade.updateOrder(currentOrder);
+		customerFacade.updateCustomer(customer);
+		this.message = "Ordine sospeso!";
+		return "order";
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-	
+	public Product getCurrentProduct() {
+		return currentProduct;
+	}
+
+	public void setCurrentProduct(Product currentProduct) {
+		this.currentProduct = currentProduct;
+	}
+
+
+	public OrderLineFacade getOrderLineFacade() {
+		return orderLineFacade;
+	}
+
+
+	public void setOrderLineFacade(OrderLineFacade orderLineFacade) {
+		this.orderLineFacade = orderLineFacade;
+	}
+
+
 	public OrderFacade getOrderFacade() {
 		return orderFacade;
 	}
@@ -58,12 +137,6 @@ public class OrderController {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getCreationTime() {
-		return creationTime;
-	}
-	public void setCreationTime(Date creationTime) {
-		this.creationTime = creationTime;
-	}
 	public Order getCurrentOrder() {
 		return currentOrder;
 	}
@@ -75,18 +148,6 @@ public class OrderController {
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
-	}
-	public Date getClosingTime() {
-		return closingTime;
-	}
-	public void setClosingTime(Date closingTime) {
-		this.closingTime = closingTime;
-	}
-	public Date getEvasionTime() {
-		return evasionTime;
-	}
-	public void setEvasionTime(Date evasionTime) {
-		this.evasionTime = evasionTime;
 	}
 	public String getMessage() {
 		return message;
@@ -124,19 +185,7 @@ public class OrderController {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	public String evasionOrder(){
-		String nextPage = "listCustomerOrders";
-		this.order = orderFacade.getOrder(id);
-		if (productFacade.verificaQuantity(order)){
-			productFacade.reduceQuantity(order);
-			orderFacade.evasionOrder(order);
-			this.orders = orderFacade.getAllClosedOrders();
-		}
-		else 
-			nextPage = "errorEvasion";
 
-		return nextPage;
-	}
 
 	public String listOrders() {
 		this.orders = orderFacade.getAllOrders(customer);
@@ -151,19 +200,11 @@ public class OrderController {
 	public String findOrder() {
 		this.currentOrder = orderFacade.getOrder(id);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentOrder", this.currentOrder);
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("currentProduct");
 		return "order";
 	}
 
-	public String createOrder(){
-		this.currentOrder = orderFacade.createOrder(customer);
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentOrder", this.currentOrder);
-		return "order";
-	}
-
-	public String addOrderProduct(){
-		Product product = productFacade.getProduct(idProduct);
-		orderFacade.createOrderLine(currentOrder,product, quantity, product.getPrice());
+	public String findOrder(Long id) {
+		this.currentOrder = orderFacade.getOrder(id);
 		return "order";
 	}
 
@@ -176,19 +217,14 @@ public class OrderController {
 		return "listCustomerOrders";
 	}
 
-	public String closeOrder() {
-		orderFacade.closeOrder(currentOrder);
-		this.orders = orderFacade.getAllOrders(customer);
-		return "listCustomerOrders";
+	public CustomerFacade getCustomerFacade() {
+		return customerFacade;
 	}
 
-	public String allOrders(){
-		return message;
-		
+	public void setCustomerFacade(CustomerFacade customerFacade) {
+		this.customerFacade = customerFacade;
 	}
-	
-	
-	
+
 }
 
 

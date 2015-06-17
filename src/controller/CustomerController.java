@@ -41,9 +41,6 @@ public class CustomerController {
 	public String getFirstName() {
 		return firstName;
 	}
-
-	
-	
 	
 	public CustomerFacade getCustomerFacade() {
 		return customerFacade;

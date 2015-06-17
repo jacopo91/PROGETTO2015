@@ -19,6 +19,7 @@
 				<th>Data chiusura</th>
 				<th>Data evasione</th>
 				<th>Stato</th>
+
 			</tr>
 
 			<c:forEach var="order" items="#{orderController.orders}">
@@ -30,11 +31,20 @@
 							</h:commandLink></td>
 					</h:form>
 					<td>${order.creationTime}</td>
-					<td>${order.closingTime}</td>
-					<td>${order.evasionTime}</td>
-					<td>${order.state}</td>
-
+					<td>${order.completedTime}</td>
+					<td>${order.processedTime}</td>
+					<td>
+						<div>
+							<c:choose>
+								<c:when test="${currentOrder.chiuso == false}">Stato: Aperto</c:when>
+								<c:otherwise>
+		Stato: Completato
+		</c:otherwise>
+							</c:choose>
+						</div>
+					</td>
 				</tr>
+
 			</c:forEach>
 		</table>
 		<h:form>

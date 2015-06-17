@@ -238,5 +238,9 @@ public class ProductController {
 		this.products = productFacade.getAllProducts();
 		return "catalog";
 	}
+	public String listCustomerOrderProducts() {
+		this.products = productFacade.getAllProducts();
+		return "customerOrderProducts"; 
+	}
 
 }

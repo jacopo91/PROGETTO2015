@@ -59,5 +59,8 @@ public class CustomerFacade {
 		customer.setConfermato(true);
 		em.merge(customer);
 	}
+	public void updateCustomer(Customer customer) {
+		em.merge(customer);
+	}
 }
 
